@@ -12,7 +12,7 @@ from database import database
 router = APIRouter()
 
 # Password hashing
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 
 # In-memory "database"
 fake_users_db = {}
