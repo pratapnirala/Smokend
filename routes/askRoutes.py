@@ -34,7 +34,7 @@ async def ask_question(item: Question):
     if user_question in qa_data:
         return {"answer": qa_data[user_question]}
 
-    # 2. Use Azure OpenAI for related questions.
+    # 2. Use Azure OpenAI for related questions
     response = client.chat.completions.create(
         model=config.config.azure_openai_deployment,
         messages=[

@@ -1,5 +1,7 @@
 from fastapi import APIRouter, HTTPException, status, Depends
 from passlib.context import CryptContext
+
+from database.database import client, db
 from models import usermodel
 from datetime import datetime, timedelta
 from config import config
@@ -79,3 +81,11 @@ def login(user: usermodel.UserLogin):
 def jwttokenDecode(user:usermodel.UserInfoDecode):  # ✅ use correct model name
     payload = decode_jwt_token({"jwttoken": user.jwttoken})  # ✅ pass dict or directly decode
     return payload
+
+@router.get("/ping")
+async def ping_db():
+    try:
+        client.admin.command("ping")
+        return {"status": f"MongoDB connected to {db.name}"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"MongoDB error: {str(e)}")
