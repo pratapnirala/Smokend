@@ -8,7 +8,6 @@ from config import config
 import jwt
 from database import database
 
-
 router = APIRouter()
 
 # Password hashing
@@ -36,22 +35,23 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
 
 
 def decode_jwt_token(data: dict):
-        """
+    """
         Decode JWT token when it's received inside a JSON object:
         { "jwttoken": "<token>" }
         """
 
-        token = data.get("jwttoken")
-        if not token:
-            raise HTTPException(status_code=400, detail="Missing JWT token")
+    token = data.get("jwttoken")
+    if not token:
+        raise HTTPException(status_code=400, detail="Missing JWT token")
 
-        try:
-            payload = jwt.decode(token, config.config.secret_key, algorithms=[config.config.algorithm])
-            return payload
-        except jwt.ExpiredSignatureError:
-            raise HTTPException(status_code=401, detail="Token has expired")
-        except jwt.InvalidTokenError:
-            raise HTTPException(status_code=401, detail="Invalid token")
+    try:
+        payload = jwt.decode(token, config.config.secret_key, algorithms=[config.config.algorithm])
+        return payload
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Token has expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
 
 # ===== Signup Route =====
 @router.post("/signup")
@@ -78,9 +78,10 @@ def login(user: usermodel.UserLogin):
 
 # ====== JWT Decode =====
 @router.post("/decode")
-def jwttokenDecode(user:usermodel.UserInfoDecode):  # ✅ use correct model name
+def jwttokenDecode(user: usermodel.UserInfoDecode):  # ✅ use correct model name
     payload = decode_jwt_token({"jwttoken": user.jwttoken})  # ✅ pass dict or directly decode
     return payload
+
 
 @router.get("/ping")
 async def ping_db():

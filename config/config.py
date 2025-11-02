@@ -2,6 +2,7 @@ from pydantic_settings import BaseSettings
 from pydantic import ConfigDict
 
 
+
 class Config_var(BaseSettings):
     app_name: str
     app_env: str
@@ -20,6 +21,9 @@ class Config_var(BaseSettings):
     azure_openai_api_version: str
     azure_openai_deployment: str
     access_token_expire_minutes: int
+    account_name: str
+    account_key: str
+    container_name: str
 
     # ✅ Pydantic v2 style configuration
     model_config = ConfigDict(
