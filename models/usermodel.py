@@ -7,7 +7,8 @@ class UserSignup(BaseModel):
     email: EmailStr
     password: str
     gender: str
-    age: int
+    age: str
+    phone: str
 
 
 class UserLogin(BaseModel):

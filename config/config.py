@@ -24,7 +24,7 @@ class Config_var(BaseSettings):
     account_name: str
     account_key: str
     container_name: str
-
+    cipher_key:str
     # ✅ Pydantic v2 style configuration
     model_config = ConfigDict(
         env_file=".env",

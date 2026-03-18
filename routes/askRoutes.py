@@ -17,8 +17,6 @@ json_path = os.path.join(BASE_DIR, "config", "qa_data.json")
 with open(json_path, "r", encoding="utf-8") as f:
     qa_data = json.load(f)
 
-
-
 client = AzureOpenAI(
     api_version=config.config.azure_openai_api_version,
     azure_endpoint=config.config.azure_openai_endpoint,
