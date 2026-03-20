@@ -128,7 +128,8 @@ def signup(user: usermodel.UserSignup):
     hashed_pwd = hash_password(user.password)
     database.users_collection.insert_one(
         {"firstname": user.firstname, "lastname": user.lastname, "email": userEmail, "password": hashed_pwd,
-         "gender": user.gender, "age": user.age, "phone": userPhone})
+         "gender": user.gender, "age": user.age, "phone": userPhone, "createdAt": datetime.utcnow().strftime("%d-%m-%Y %H:%M:%S")
+})
     return {"message": "User created successfully"}
 
 

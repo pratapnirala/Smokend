@@ -4,6 +4,7 @@ from database import database
 from models import goalsettingmodel
 from config.jwt_helper import validate_token
 from database.database import client, db
+from datetime import datetime, timedelta
 
 GoleSettingRouter = APIRouter()
 
@@ -18,6 +19,6 @@ def golesetting(data: goalsettingmodel.smokgoleset, token: str = Header(None, al
     print("Received token:", token)
     print("Received Body:", data)
     db.golesetting.insert_one({"mainReason": data.main_reason, "customReason": data.custom_reason,
-                               "userID": user_id})
+                               "userID": user_id, "createdAt": datetime.utcnow().strftime("%d-%m-%Y %H:%M:%S")})
 
     return {"success": True, "token": token, "data": data}
