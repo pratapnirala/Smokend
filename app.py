@@ -4,7 +4,7 @@ from starlette.staticfiles import StaticFiles
 
 from routes.adminRoutes import adminRouter
 from routes.dailycheckInRouter import DailyCheckInRouter
-from routes.dashboardRouter import  DashboardRouter
+from routes.dashboardRouter import DashboardRouter
 from routes.smokingAssessmentRouter import assessmentRouter
 from routes.goalSettingRouter import GoleSettingRouter
 from routes.userRoutes import router
@@ -18,9 +18,9 @@ app = FastAPI(title=config.config.app_name)
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "*",                       # Only for development
+    "*",  # Only for development
     "https://yourwebsite.com",  # Production domain
-    "exp://*",                 # For React Native Expo
+    "exp://*",  # For React Native Expo
     "http://localhost:19006",  # React Native Metro
 ]
 
