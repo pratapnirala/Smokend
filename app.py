@@ -3,8 +3,10 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.staticfiles import StaticFiles
 
 from routes.adminRoutes import adminRouter
+from routes.challangeRouter import ChallangeRouter
 from routes.dailycheckInRouter import DailyCheckInRouter
 from routes.dashboardRouter import DashboardRouter
+from routes.gratitudeRouter import GratitudeRouter
 from routes.smokingAssessmentRouter import assessmentRouter
 from routes.goalSettingRouter import GoleSettingRouter
 from routes.userRoutes import router
@@ -41,4 +43,6 @@ app.include_router(assessmentRouter, prefix="/v1")
 app.include_router(GoleSettingRouter, prefix="/v1")
 app.include_router(DailyCheckInRouter, prefix="/v1")
 app.include_router(DashboardRouter, prefix="/v1")
+app.include_router(ChallangeRouter, prefix="/v1")
+app.include_router(GratitudeRouter, prefix="/v1")
 app.include_router(adminRouter, prefix="/admin")

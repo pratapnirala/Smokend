@@ -12,7 +12,7 @@ from models.dashboardmodal import Dashboard
 DashboardRouter = APIRouter()
 
 
-# ===== Daily Check-In  Route =====
+# ===== dashboard  Route =====
 @DashboardRouter.post("/dashboard")
 def dashboard(data: Optional[Dashboard] = None, token: str = Header(None, alias="smokend-auth-token")):
     if token is None:
