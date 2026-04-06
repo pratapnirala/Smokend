@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 from starlette.staticfiles import StaticFiles
 
+from routes.achievementRouter import AchievementRouter
 from routes.adminRoutes import adminRouter
 from routes.challangeRouter import ChallangeRouter
 from routes.dailycheckInRouter import DailyCheckInRouter
@@ -11,6 +12,7 @@ from routes.smokingAssessmentRouter import assessmentRouter
 from routes.goalSettingRouter import GoleSettingRouter
 from routes.userRoutes import router
 from routes.askRoutes import askRouter
+from routes.userTrackingRouter import UserTrackingRouter
 from routes.videoRoutes import videoRouter
 
 from config import config
@@ -45,4 +47,6 @@ app.include_router(DailyCheckInRouter, prefix="/v1")
 app.include_router(DashboardRouter, prefix="/v1")
 app.include_router(ChallangeRouter, prefix="/v1")
 app.include_router(GratitudeRouter, prefix="/v1")
+app.include_router(UserTrackingRouter, prefix="/v1")
+app.include_router(AchievementRouter, prefix="/v1")
 app.include_router(adminRouter, prefix="/admin")

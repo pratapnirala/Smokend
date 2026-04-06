@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel, EmailStr
 
 
@@ -8,7 +10,7 @@ class UserSignup(BaseModel):
     password: str
     gender: str
     age: str
-    phone: str
+    phone: Optional[str] = None  # <-- optional field
 
 
 class UserLogin(BaseModel):
