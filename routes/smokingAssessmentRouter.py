@@ -17,7 +17,7 @@ def assessment(data: smokingassessmentmodel.Assessment, token: str = Header(None
     user_id = validate_token(token)
     print("Received token:", token)
     print("Received Body:", data)
-    db.assessment.insert_one({"cigarettesPerDay": data.cigarettesPerDay, "yearsSmoking": data.yearsSmoking,
+    db.assessment.insert_one({"cigarettesPerDay": data.cigarettesPerDay, "costPerPack":data.costPerPack, "yearsSmoking": data.yearsSmoking,
                               "quitAttempts": data.quitAttempts, "motivation": data.motivation,
                               "userID": data.userID, "createdAt": datetime.utcnow().strftime("%d-%m-%Y %H:%M:%S")})
 
