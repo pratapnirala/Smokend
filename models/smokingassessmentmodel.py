@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr
-from decimal import Decimal
+
 
 
 class Assessment(BaseModel):
@@ -7,5 +7,5 @@ class Assessment(BaseModel):
     motivation: int
     quitAttempts: int
     yearsSmoking: int
-    costPerPack: Decimal
+    costPerPack: float
     userID: str
